@@ -31,5 +31,12 @@ public class RegattaRESTController {
         regattaRepository.deleteById(regattaId);
     }
 
+    @PostMapping("/updateRegatta")
+    public Regatta updateRegatta(@RequestBody Regatta regatta) {
+        Regatta regattaToUpdate = regattaRepository.findById(regatta.getId()).get();
+        regattaToUpdate.setSize(regatta.getSize());
+        return regattaRepository.save(regattaToUpdate);
+    }
+
 
 }
